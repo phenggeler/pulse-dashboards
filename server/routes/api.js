@@ -107,7 +107,7 @@ function workflowsTemplates(req, res, next) {
   res.sendFile(filepath, {}, (err) => {
     if (err) {
       const error = {
-        message: `Failed to send file ${filename} for stateCode ${stateCode}. ${err}`,
+        message: `Failed to send file ${sanitizedFileName} for stateCode ${stateCode}. ${err}`,
       };
       next(error);
     }
