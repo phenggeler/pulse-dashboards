@@ -101,7 +101,7 @@ function workflowsTemplates(req, res, next) {
   const { filename } = req.query;
   const filepath = path.resolve(
     __dirname,
-    `../assets/workflowsTemplates/${stateCode}/${filename}`
+    `../assets/workflowsTemplates/${stateCode}/${sanitizeFilename(filename)}`
   );
   res.sendFile(filepath, {}, (err) => {
     if (err) {
