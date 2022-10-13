@@ -49,6 +49,8 @@ const limiter = rateLimit({
   legacyHeaders: false, // disabling the `X-RateLimit-*` headers
 });
 
+app.use(limiter);
+
 Sentry.init({
   environment: process.env.SENTRY_ENV,
   dsn: process.env.SENTRY_DNS,
@@ -196,7 +198,7 @@ app.get("/_ah/warmup", () => {
 // authenticates the user to Firestore with Auth0 credential
 app.get("/token", getFirebaseToken);
 
-app.use(limiter);
+
 
 // The Sentry error handler must be before any other error middleware and after all controllers
 app.use(Sentry.Handlers.errorHandler());
